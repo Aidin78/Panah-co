@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/*
+  Panah design tokens — confirmed visual direction (see design-direction artifact).
+  Palette traced from the client's own building photography: warm travertine,
+  near-black window framing, deep bronze-umber. Not a generic "modern" default.
+*/
+
+:root {
+  --color-plaster: #efe9df;
+  --color-plaster-deep: #e4dccb;
+  --color-ink: #1c1a17;
+  --color-ink-soft: #565048;
+  --color-stone: #a67c52;
+  --color-stone-light: #c9a876;
+  --color-umber: #3a3229;
+  --color-umber-deep: #2a241d;
+  --color-line: #d8cfbd;
+  --color-panel: #f7f4ec;
+
+  --background: var(--color-plaster);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-plaster: var(--color-plaster);
+  --color-plaster-deep: var(--color-plaster-deep);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-stone: var(--color-stone);
+  --color-stone-light: var(--color-stone-light);
+  --color-umber: var(--color-umber);
+  --color-umber-deep: var(--color-umber-deep);
+  --color-line: var(--color-line);
+  --color-panel: var(--color-panel);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  /* IranYekan not yet sourced — falls back to Vazirmatn/Tahoma until the
+     real font file is added (see src/app/fonts/README.md). */
+  --font-fa: var(--font-iranyekan, "Vazirmatn", "Tahoma", sans-serif);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-plaster: #151310;
+    --color-plaster-deep: #0f0d0b;
+    --color-ink: #efe9df;
+    --color-ink-soft: #b3a998;
+    --color-stone: #c9a876;
+    --color-stone-light: #dcbd8c;
+    --color-umber: #a67c52;
+    --color-umber-deep: #8a6541;
+    --color-line: #3a342a;
+    --color-panel: #1c1a15;
+
+    --background: var(--color-plaster);
+    --foreground: var(--color-ink);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), "Segoe UI", system-ui, sans-serif;
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-fa), var(--font-sans), sans-serif;
+}
