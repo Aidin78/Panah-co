@@ -21,7 +21,7 @@
       "targetField": "title",
       "required": true
     },
-    "status": {
+    "phase": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::project-status.project-status",
