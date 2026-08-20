@@ -1,0 +1,64 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Settings",
+    "description": "Planning doc §15. Singleton — one shared record for global site config."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "companyName": {
+      "type": "string",
+      "required": true,
+      "default": "گروه ساختمانی پناه"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "phones": {
+      "type": "json",
+      "description": "Array of phone numbers, e.g. [\"0912-849-6118\"]"
+    },
+    "email": {
+      "type": "email"
+    },
+    "address": {
+      "type": "text"
+    },
+    "mapLatitude": {
+      "type": "decimal"
+    },
+    "mapLongitude": {
+      "type": "decimal"
+    },
+    "socialLinks": {
+      "type": "json",
+      "description": "e.g. { \"instagram\": \"https://instagram.com/panah.construction.group\" }"
+    },
+    "defaultSeoTitle": {
+      "type": "string",
+      "required": true
+    },
+    "defaultSeoDescription": {
+      "type": "text",
+      "required": true
+    },
+    "defaultOgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    }
+  }
+}

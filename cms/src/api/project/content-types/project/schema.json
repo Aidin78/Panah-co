@@ -1,0 +1,126 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": "Panah's project portfolio. Planning doc §8/§15. No project-type field — status is the only categorization axis."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "status": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project-status.project-status",
+      "inversedBy": "projects"
+    },
+    "location": {
+      "type": "string",
+      "required": true,
+      "description": "District/area in Rasht, at minimum"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true,
+      "maxLength": 240
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "areaSqm": {
+      "type": "integer",
+      "description": "Area in square meters"
+    },
+    "unitCount": {
+      "type": "integer"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "completionDate": {
+      "type": "date"
+    },
+    "architectureInfo": {
+      "type": "richtext"
+    },
+    "constructionInfo": {
+      "type": "richtext"
+    },
+    "features": {
+      "type": "json",
+      "description": "Freeform tag list, e.g. [\"Parking\", \"Elevator\", \"Rooftop\"]"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["videos"]
+    },
+    "videoUrl": {
+      "type": "string",
+      "description": "Alternative to uploaded video — embed URL (YouTube/Vimeo)"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "relatedProjects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Manually flagged for homepage Featured Projects section"
+    },
+    "spotlight": {
+      "type": "boolean",
+      "default": false,
+      "description": "Single flagship project for homepage Spotlight section"
+    },
+    "seoTitle": {
+      "type": "string",
+      "description": "Defaults to Title if empty"
+    },
+    "seoDescription": {
+      "type": "text",
+      "description": "Defaults to Short Description if empty"
+    },
+    "relatedServices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "relatedProjects"
+    }
+  }
+}

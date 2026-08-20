@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "messages",
+  "info": {
+    "singularName": "message",
+    "pluralName": "messages",
+    "displayName": "Message / Lead",
+    "description": "Planning doc §13/§15. Written by the public site's two contact forms (General, Partnership) — not manually created in the admin."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": ["general", "partnership"],
+      "required": true,
+      "default": "general"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string"
+    },
+    "relatedProject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "messageBody": {
+      "type": "text",
+      "required": true
+    },
+    "landLocation": {
+      "type": "string",
+      "description": "Partnership inquiries only"
+    },
+    "landArea": {
+      "type": "integer",
+      "description": "Partnership inquiries only, square meters"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "contacted", "closed"],
+      "required": true,
+      "default": "new"
+    }
+  }
+}

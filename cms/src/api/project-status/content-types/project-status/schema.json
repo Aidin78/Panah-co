@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_statuses",
+  "info": {
+    "singularName": "project-status",
+    "pluralName": "project-statuses",
+    "displayName": "Project Status",
+    "description": "Admin-managed project lifecycle stages (seeded: طراحی, اجرا, بهره‌برداری). Not a hardcoded enum, per planning doc §8."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "color": {
+      "type": "string",
+      "description": "Hex color for the status badge, e.g. #a67c52"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "status"
+    }
+  }
+}
