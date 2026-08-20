@@ -39,9 +39,7 @@
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
-  /* IranYekan not yet sourced — falls back to Vazirmatn/Tahoma until the
-     real font file is added (see src/app/fonts/README.md). */
-  --font-fa: var(--font-iranyekan, "Vazirmatn", "Tahoma", sans-serif);
+  --font-fa: var(--font-iranyekan), "Vazirmatn", "Tahoma", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

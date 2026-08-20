@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -15,10 +16,15 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-// IranYekan is not on Google Fonts — it must be sourced from Panah or a
-// licensed distributor and self-hosted via next/font/local. Until that file
-// is available, --font-iranyekan is left undefined and globals.css falls
-// back to a system Persian-capable stack. See src/app/fonts/README.md.
+// YekanBakh — variable font, client-supplied. Replaces the earlier
+// IranYekan placeholder plan (see fonts/README.md) now that a real file
+// exists. Single variable-weight file covers the full range.
+const yekanBakh = localFont({
+  variable: "--font-iranyekan",
+  src: "./fonts/YekanBakh-VF.woff",
+  weight: "100 900",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="fa"
       dir="rtl"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${inter.variable} ${yekanBakh.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-plaster text-ink">
         {children}
