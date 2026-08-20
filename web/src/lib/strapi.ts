@@ -5,7 +5,17 @@ export function strapiMediaUrl(path: string): string {
   return `${STRAPI_URL}${path}`;
 }
 
-async function strapiFetch<T>(path: string, params?: Record<string, string>) {
+interface StrapiListResponse<T> {
+  data: T[];
+  meta: { pagination: { page: number; pageSize: number; pageCount: number; total: number } };
+}
+
+interface StrapiSingleResponse<T> {
+  data: T | null;
+  meta: Record<string, unknown>;
+}
+
+async function strapiRequest<T>(path: string, params?: Record<string, string>): Promise<T> {
   const url = new URL(`${STRAPI_URL}/api${path}`);
   if (params) {
     for (const [key, value] of Object.entries(params)) {
@@ -24,4 +34,14 @@ async function strapiFetch<T>(path: string, params?: Record<string, string>) {
   return (await res.json()) as T;
 }
 
-export { strapiFetch, STRAPI_URL };
+export async function strapiList<T>(path: string, params?: Record<string, string>) {
+  const res = await strapiRequest<StrapiListResponse<T>>(path, params);
+  return res.data;
+}
+
+export async function strapiOne<T>(path: string, params?: Record<string, string>) {
+  const res = await strapiRequest<StrapiSingleResponse<T>>(path, params);
+  return res.data;
+}
+
+export { STRAPI_URL };
