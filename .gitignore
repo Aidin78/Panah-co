@@ -9,3 +9,8 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Planning docs and reference assets — not tracked in this repo
+/docs/
+/pics/
+*.md
