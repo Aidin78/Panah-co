@@ -37,8 +37,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  /* Single-face system: YekanBakh everywhere (headlines, body, UI) — client
+     decision, dropping the earlier Fraunces/Inter split entirely. */
+  --font-display: var(--font-iranyekan), "Vazirmatn", "Tahoma", sans-serif;
+  --font-sans: var(--font-iranyekan), "Vazirmatn", "Tahoma", sans-serif;
   --font-fa: var(--font-iranyekan), "Vazirmatn", "Tahoma", sans-serif;
 }
 
@@ -64,8 +66,4 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), "Segoe UI", system-ui, sans-serif;
-}
-
-[dir="rtl"] body {
-  font-family: var(--font-fa), var(--font-sans), sans-serif;
 }
